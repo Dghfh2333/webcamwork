@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /lead.php
+Disallow: /private-police/
+
+Sitemap: https://webcamwork.com.ua/sitemap.xml

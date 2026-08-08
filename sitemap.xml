@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://webcamwork.com.ua/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/rabota-dlya-devushek-dnepr/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/rabota-dlya-devushek-dnepr/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/robota-dlya-divchat-dnipro/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/services/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/services/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/vakansii/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/about/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/about/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/pro-studiyu/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/portfolio/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/faq/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/contact/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/kontakty/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/udalennaya-rabota-vebkam/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/udalennaya-rabota-vebkam/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/viddalena-robota-vebkam/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/anketa-web-model/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/anketa-web-model/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/anketa-veb-modeli/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/anketa-admin/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/anketa-admin/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/anketa-admin/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/anketa-recrut/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/anketa-recrut/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/anketa-rekruter/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- UK versions -->
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/robota-dlya-divchat-dnipro/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/robota-dlya-divchat-dnipro/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/rabota-dlya-devushek-dnepr/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/vakansii/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/vakansii/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/services/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/pro-studiyu/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/pro-studiyu/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/about/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/portfolio/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/kontakty/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/kontakty/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/contact/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/viddalena-robota-vebkam/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/viddalena-robota-vebkam/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/udalennaya-rabota-vebkam/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/anketa-veb-modeli/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/anketa-veb-modeli/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/anketa-web-model/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/anketa-admin/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/anketa-admin/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/anketa-admin/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://webcamwork.com.ua/uk/anketa-rekruter/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://webcamwork.com.ua/uk/anketa-rekruter/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://webcamwork.com.ua/anketa-recrut/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
