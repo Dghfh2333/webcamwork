@@ -1,0 +1,8 @@
+DirectoryIndex index.html index.php
+Options -Indexes
+
+RewriteEngine On
+
+# Strip index.html from URLs (301 redirect)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(.*)index\.html\ HTTP/ [NC]
+RewriteRule ^(.*)index\.html$ /%1 [R=301,L]
