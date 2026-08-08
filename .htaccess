@@ -25,6 +25,8 @@ Options -Indexes
   ExpiresByType text/plain "access plus 1 week"
 </IfModule>
 
+ErrorDocument 404 /404.html
+
 RewriteEngine On
 
 # Strip index.html from URLs (301 redirect)
