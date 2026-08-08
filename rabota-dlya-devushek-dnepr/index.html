@@ -126,7 +126,7 @@ footer{padding:26px 0;text-align:center;color:#666;font-size:13px;border-top:1px
 </style>
 <style>
 #bmenu{display:none;background:none;border:1px solid var(--line);border-radius:10px;color:var(--text);font-size:20px;padding:6px 12px;cursor:pointer}
-@media(max-width:860px){#bmenu{display:block}.lang-sw{display:none!important}header .btn.sm{display:none}}
+@media(max-width:860px){#bmenu{display:block}.lang-sw{display:none!important}header .btn.sm{display:none}.calcgrid{grid-template-columns:1fr!important}}
 #drawer{position:fixed;top:0;right:-280px;width:270px;height:100%;background:var(--surface);border-left:1px solid var(--line);z-index:200;transition:right .25s;padding:24px}
 #drawer.open{right:0}
 #drawer a{display:block;padding:13px 10px;color:var(--text);font-size:15.5px;border-bottom:1px solid var(--line)}
@@ -215,6 +215,30 @@ footer{padding:26px 0;text-align:center;color:#666;font-size:13px;border-top:1px
   </div>
 </section>
 
+<section class="wrap" id="kalkulyator" style="padding:40px 0">
+  <div style="background:linear-gradient(135deg,rgba(255,77,141,.1),rgba(185,107,255,.1));border:1px solid #31213F;border-radius:20px;padding:36px">
+    <h2 style="margin:0 0 6px">Посчитай <span>свой доход</span></h2>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:20px">Двигай ползунок — цифры пересчитаются сразу</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center" class="calcgrid">
+      <div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+          <button class="preset btn" style="padding:8px 16px;font-size:13px" data-h="15">Подработка · 15ч</button>
+          <button class="preset btn" style="padding:8px 16px;font-size:13px" data-h="25">Стандарт · 25ч</button>
+          <button class="preset btn" style="padding:8px 16px;font-size:13px" data-h="50">Максимум · 50ч</button>
+        </div>
+        <label style="font-size:14px;color:var(--muted)">Часов в неделю: <b id="chv" style="color:var(--text)">25</b></label>
+        <input type="range" id="chours" min="15" max="50" value="25" style="width:100%;accent-color:var(--gold);margin:10px 0 0">
+      </div>
+      <div style="background:var(--surface);border-radius:14px;padding:24px;text-align:center">
+        <div style="color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em">Ваш доход</div>
+        <div id="cres" style="font-size:40px;font-weight:900;background:linear-gradient(100deg,var(--gold),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2;margin:6px 0 2px">25 000 грн</div>
+        <div style="color:var(--muted);font-size:13px;margin-bottom:16px">в месяц · <span id="cday" style="color:var(--gold-l);font-weight:700">≈ 960 грн в день</span></div>
+        <a class="btn" href="#zayavka" style="width:100%;display:block;text-align:center;box-sizing:border-box">Хочу столько зарабатывать →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="wrap faq">
   <h2>Частые <span>вопросы</span></h2>
   <details><summary>Можно ли работать без опыта?</summary><p>Да. 90% девушек приходят без опыта. Обучение с нуля бесплатное: тренер, готовые скрипты, помощь на первых сменах.</p></details>
@@ -239,6 +263,7 @@ footer{padding:26px 0;text-align:center;color:#666;font-size:13px;border-top:1px
 <div class="cross">
   <div class="wrap">
     <a href="https://webcamwork.com.ua/">Главная студии</a>
+    <a href="https://webcamwork.com.ua/udalennaya-rabota-vebkam/">🏠 Удалённая работа онлайн</a>
     <a href="https://webcamwork.com.ua/anketa-recrut/">Анкета рекрутёра</a>
     <a href="https://webcamwork.com.ua/services/">Все вакансии</a>
     <a href="https://webcamodel.com.ua/">Студия Webcamodel</a>
@@ -252,6 +277,14 @@ footer{padding:26px 0;text-align:center;color:#666;font-size:13px;border-top:1px
 
 <script src="/wmt.js"></script>
 <script>
+(function(){
+  var h=document.getElementById('chours'),r=document.getElementById('cres'),v=document.getElementById('chv'),cd=document.getElementById('cday');
+  if(!h)return;
+  function inc(x){x=+x;var m=x<=25?18000+(x-15)*1900:37000+(x-25)*7360;return Math.round(m/500)*500;}
+  function calc(){var m=inc(h.value);v.textContent=h.value;r.textContent=m.toLocaleString('uk-UA')+' грн';cd.textContent='≈ '+(Math.round(m/26/10)*10).toLocaleString('uk-UA')+' грн в день';}
+  h.addEventListener('input',calc);calc();
+  document.querySelectorAll('.preset').forEach(function(b){b.addEventListener('click',function(){h.value=b.dataset.h;calc();});});
+})();
 document.getElementById('leadform').addEventListener('submit',function(e){
   e.preventDefault();var f=e.target;
   if(f.website&&f.website.value)return;
