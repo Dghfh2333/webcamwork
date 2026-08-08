@@ -66,7 +66,7 @@ footer a{color:#7d6b8c}
 </style>
 <style>
 #bmenu{display:none;background:none;border:1px solid var(--line);border-radius:10px;color:var(--text);font-size:20px;padding:6px 12px;cursor:pointer}
-@media(max-width:860px){#bmenu{display:block}}
+@media(max-width:860px){#bmenu{display:block}.lang-sw{display:none!important}header .btn.sm{display:none}}
 #drawer{position:fixed;top:0;right:-280px;width:270px;height:100%;background:var(--surface);border-left:1px solid var(--line);z-index:200;transition:right .25s;padding:24px}
 #drawer.open{right:0}
 #drawer a{display:block;padding:13px 10px;color:var(--text);font-size:15.5px;border-bottom:1px solid var(--line)}
@@ -81,7 +81,7 @@ footer a{color:#7d6b8c}
 <header><div class="wrap">
   <a class="logo" href="/">Webcam<span>Work</span></a>
   <nav class="top"><a href="/services/">Вакансии</a><a href="/portfolio/">Вопросы</a><a href="/about/">О студии</a><a href="/contact/">Контакты</a></nav>
-  <div style="display:flex;align-items:center;gap:2px;font-size:12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:3px"><span style="color:var(--text);font-weight:700;background:var(--surface2);border-radius:5px;padding:3px 8px">RU</span><a href="/uk/kontakty/" style="color:var(--muted);padding:3px 8px;border-radius:6px;font-weight:600">UA</a></div>
+  <div class="lang-sw" style="display:flex;align-items:center;gap:2px;font-size:12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:3px"><span style="color:var(--text);font-weight:700;background:var(--surface2);border-radius:5px;padding:3px 8px">RU</span><a href="/uk/kontakty/" style="color:var(--muted);padding:3px 8px;border-radius:6px;font-weight:600">UA</a></div>
   <a class="btn sm" href="/anketa-web-model/">Оставить заявку</a><button id="bmenu" onclick="wdT()">☰</button>
 </div></header>
 <div id="dov" onclick="wdT()"></div>
@@ -94,6 +94,7 @@ footer a{color:#7d6b8c}
   <a href="/about/">О студии</a>
   <a href="/contact/">Контакты</a>
   <a href="/anketa-web-model/">Анкета веб-модели</a>
+  <a href="/udalennaya-rabota-vebkam/">🏠 Работа из дома (вся Украина)</a>
   <a href="https://t.me/aliadmii" target="_blank" style="color:#7CC8F0">✈ Telegram</a>
 </aside>
 <script>function wdT(){document.getElementById('drawer').classList.toggle('open');document.getElementById('dov').classList.toggle('open');}</script>
