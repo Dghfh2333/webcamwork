@@ -363,38 +363,18 @@ footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center}
   <p class="ft-copy">© 2026 webcamwork.com.ua · Робота для дівчат у Дніпрі та дистанційно</p>
 </footer>
 
+<script src="/wmt.js"></script>
 <script>
-var WMT=(function(){
-  var t0=Date.now(),src=location.search||document.referrer||'direct',ret=localStorage.getItem('wm_ret')?'Повторний':'Новий';
-  localStorage.setItem('wm_ret','1');
-  var dev=navigator.userAgent;
-  if(/iPhone|iPad/.test(dev)){dev='iOS';}else if(/Android/.test(dev)){var m=dev.match(/Android[\s/]([\d.]+)/);dev='Android '+(m?m[1]:'');}else{dev='Desktop';}
-  var geo=null;
-  var ready=fetch('https://get.geojs.io/v1/ip/geo.json').then(function(r){return r.json();}).then(function(g){geo=g;}).catch(function(){});
-  function onSite(){var s=Math.round((Date.now()-t0)/1000);return s>=60?Math.floor(s/60)+' хв '+(s%60)+' сек':s+' сек';}
-  function lines(){
-    var L=['🔗 <b>Джерело:</b> '+src];
-    if(geo&&geo.ip){L.push('📍 <b>Гео:</b> '+(geo.city||'')+(geo.country?', '+geo.country:'')+' · IP '+geo.ip);}
-    L.push('📟 <b>Пристрій:</b> '+dev);
-    L.push('👤 '+ret+' відвідувач · на сайті '+onSite());
-    return L;
-  }
-  return {lines:lines,ready:ready};
-})();
 var equipMap={phone:'📱 Смартфон',laptop:'💻 Ноутбук',webcam:'🎥 Веб-камера + ПК',nothing:'❓ Поки нічого'};
 document.getElementById('leadForm').addEventListener('submit',async function(e){
   e.preventDefault();
   var d=Object.fromEntries(new FormData(this));
-  var now=new Date();
-  var ts=now.toLocaleString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  try{await Promise.race([WMT.ready,new Promise(function(r){setTimeout(r,1500);})]);}catch(e){}
-  var text=[
-    '🏠 <b>Нова заявка — Робота вдома (UK)</b>',
-    '🌐 <b>Сайт:</b> webcamwork.com.ua/uk/viddalena-robota-vebkam/',
-    '','👤 <b>Ім\'я:</b> '+d.name,'📱 <b>Контакт:</b> '+d.contact,'💻 <b>Обладнання:</b> '+(equipMap[d.equipment]||d.equipment),
-    '',...WMT.lines(),'','🕐 '+ts
-  ].join('\n');
-  try{await fetch('/lead.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({site:'webcamwork.com.ua',page:'/uk/viddalena-robota-vebkam/',text:text,website:d.website||''})});}catch(e){}
+  await wmSendLead([
+    '🏠 <b>Нова заявка — Робота вдома (UK)</b>','',
+    '👤 Ім\'я: '+d.name,'📱 Контакт: '+d.contact,
+    '💻 Обладнання: '+(equipMap[d.equipment]||d.equipment),
+    '📄 Сторінка: webcamwork.com.ua/uk/viddalena-robota-vebkam/'
+  ]);
   document.getElementById('leadForm').style.display='none';
   document.getElementById('success').style.display='block';
 });

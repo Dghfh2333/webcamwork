@@ -529,31 +529,7 @@ footer{padding:28px 0;text-align:center;color:#7d6b8c;font-size:13px;border-top:
 
 <div class="sticky-cta"><a class="btn" href="#zayavka">Заявка — від 28 000 грн/міс</a></div>
 
-<script>
-(function(){
-  var f = document.getElementById('leadform');
-  f.addEventListener('submit', function(e){
-    e.preventDefault();
-    if (f.website.value) return;
-    var last = +sessionStorage.getItem('ls') || 0;
-    if (Date.now() - last < 30000) { alert('Заявку вже надіслано. Зачекайте трохи.'); return; }
-    var msg = '<b>Заявка з головної webcamwork.com.ua/uk/</b>\n' +
-      'Ім\'я: ' + f.name.value + '\n' +
-      'Контакт: ' + f.phone.value + '\n' +
-      'Сторінка: ' + location.href;
-    fetch('/lead.php', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({site:location.hostname,page:location.pathname,text:msg,website:document.querySelector('input[name="website"]')?.value||''})
-    }).then(function(){
-      sessionStorage.setItem('ls', Date.now());
-      window.dataLayer = window.dataLayer || [];
-      dataLayer.push({event: 'lead_submit', form: 'home_uk'});
-      f.innerHTML = '<p style="text-align:center;font-size:18px">✅ Заявку надіслано!<br>Напишемо вам протягом години.</p>';
-    }).catch(function(){ alert('Помилка. Напишіть нам у Telegram.'); });
-  });
-})();
-</script>
+<script src="/wmt.js"></script>
 <script>
 (function(){
   var h=document.getElementById('chours'),r=document.getElementById('cres'),v=document.getElementById('chv'),cd=document.getElementById('cday');
@@ -569,25 +545,44 @@ footer{padding:28px 0;text-align:center;color:#7d6b8c;font-size:13px;border-top:
       document.querySelector('.qstep[data-q="'+next+'"]').style.display='block';
       if(next==='done'){
         document.getElementById('qres').textContent=(ans['2']||'Веб-модель')+(ans['1']==='Без досвіду'?' + безкоштовне навчання':'');
-        var sel=document.querySelector('select[name=dir]');if(sel&&ans['2'])sel.value=ans['2'];
         window.dataLayer=window.dataLayer||[];dataLayer.push({event:'quiz_complete',dir:ans['2']});
       }
     });
   });
+
+  document.getElementById('leadform').addEventListener('submit',function(e){
+    e.preventDefault();var f=e.target;
+    if(f.website&&f.website.value)return;
+    var last=+sessionStorage.getItem('ls')||0;
+    if(Date.now()-last<30000){alert('Заявку вже надіслано. Зачекайте хвилину.');return;}
+    wmSendLead([
+      '🔔 <b>Заявка з головної — webcamwork.com.ua/uk/</b>','',
+      '👤 Ім\'я: '+f.name.value,'📱 Контакт: '+f.phone.value,
+      '📄 Сторінка: '+location.href
+    ]).then(function(){
+      sessionStorage.setItem('ls',Date.now());
+      window.dataLayer=window.dataLayer||[];dataLayer.push({event:'lead_submit',form:'home_uk'});
+      f.innerHTML='<p style="text-align:center;font-size:18px">✅ Заявку надіслано!<br>Напишемо вам протягом години.</p>';
+    });
+  });
+
   var cs=document.getElementById('csend');
   if(cs)cs.addEventListener('click',function(){
     var n=document.getElementById('cname').value.trim(),p=document.getElementById('cphone').value.trim();
     if(!n||!p){alert("Заповніть ім'я і контакт");return;}
     var last=+sessionStorage.getItem('ls')||0;
     if(Date.now()-last<30000){alert('Заявку вже надіслано.');return;}
-    var msg='<b>Заявка з калькулятора webcamwork/uk</b>\n'+'Ім\'я: '+n+'\nКонтакт: '+p+'\nГодин/тиж: '+document.getElementById('chours').value+'\nРозрахунок: '+document.getElementById('cres').textContent;
-    fetch('/lead.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({site:location.hostname,page:location.pathname,text:msg,website:''})}).then(function(){
+    wmSendLead([
+      '🔔 <b>Заявка з калькулятора — webcamwork.com.ua/uk/</b>','',
+      '👤 Ім\'я: '+n,'📱 Контакт: '+p,
+      '⏱ Годин/тиж: '+document.getElementById('chours').value,
+      '💰 Розрахунок: '+document.getElementById('cres').textContent
+    ]).then(function(){
       sessionStorage.setItem('ls',Date.now());
       window.dataLayer=window.dataLayer||[];dataLayer.push({event:'lead_submit',form:'calculator_uk'});
       document.getElementById('calcform').innerHTML='<p style="text-align:center">✅ Прийнято! Напишемо протягом години.</p>';
-    }).catch(function(){alert('Помилка. Напишіть у Telegram.');});
+    });
   });
-  document.querySelectorAll('.tglink').forEach(function(a){a.addEventListener('click',function(){window.dataLayer=window.dataLayer||[];dataLayer.push({event:'telegram_click'});});});
 })();
 </script>
 </body>

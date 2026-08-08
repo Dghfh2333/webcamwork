@@ -121,27 +121,6 @@ footer a{color:#7d6b8c}
 </div>
 </div>
 <footer>© 2018–2026 Студия WEBMODEL, Днепр, ул. Харьковская, 11. 18+ · <a href="/">Главная</a> · <a href="/rabota-dlya-devushek-dnepr/">Работа для девушек</a> · <a href="https://webcamodel.com.ua/">Webcamodel</a></footer>
-<script>
-function wcwForm(fid, label){
-  var f=document.getElementById(fid);
-  if(!f)return;
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    if(f.website&&f.website.value)return;
-    var last=+sessionStorage.getItem('ls')||0;
-    if(Date.now()-last<30000){alert('Заявка уже отправлена.');return;}
-    var msg='<b>'+label+'</b>\n';
-    Array.prototype.forEach.call(f.querySelectorAll('input:not(.hp),select,textarea'),function(el){
-      if(el.value&&el.type!=='submit')msg+=el.getAttribute('data-l')+': '+el.value+'\n';
-    });
-    msg+='Страница: '+location.href;
-    fetch('/lead.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({site:location.hostname,page:location.pathname,text:msg,website:document.querySelector('input[name="website"]')?.value||''})}).then(function(){
-      sessionStorage.setItem('ls',Date.now());
-      window.dataLayer=window.dataLayer||[];dataLayer.push({event:'lead_submit',form:fid});
-      f.innerHTML='<p style="text-align:center;font-size:17px">✅ Заявка отправлена!<br>Напишем вам в течение часа.</p>';
-    }).catch(function(){alert('Ошибка отправки. Напишите в Telegram: @aliadmii');});
-  });
-}
-</script>
+<script src="/wmt.js"></script>
 </body>
 </html>

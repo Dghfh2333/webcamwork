@@ -246,30 +246,23 @@ footer{padding:26px 0;text-align:center;color:#666;font-size:13px;border-top:1px
 
 <div class="sticky-cta"><a class="btn" href="#zayavka">Оставить заявку — от 28 000 грн/мес</a></div>
 
+<script src="/wmt.js"></script>
 <script>
-(function(){
-  var f = document.getElementById('leadform');
-  f.addEventListener('submit', function(e){
-    e.preventDefault();
-    if (f.website.value) return;
-    var last = +sessionStorage.getItem('ls') || 0;
-    if (Date.now() - last < 30000) { alert('Заявка уже отправлена. Подождите немного.'); return; }
-    var msg = '<b>Заявка: работа для девушек (webcamwork)</b>\n' +
-      'Имя: ' + f.name.value + '\n' +
-      'Контакт: ' + f.phone.value + '\n' +
-      'Страница: ' + location.href;
-    fetch('/lead.php', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({site:location.hostname,page:location.pathname,text:msg,website:document.querySelector('input[name="website"]')?.value||''})
-    }).then(function(){
-      sessionStorage.setItem('ls', Date.now());
-      window.dataLayer = window.dataLayer || [];
-      dataLayer.push({event: 'lead_submit', form: 'rabota-dlya-devushek'});
-      f.innerHTML = '<p style="text-align:center;font-size:18px">✅ Заявка отправлена!<br>Напишем вам в течение часа.</p>';
-    }).catch(function(){ alert('Ошибка отправки. Напишите нам в Telegram.'); });
+document.getElementById('leadform').addEventListener('submit',function(e){
+  e.preventDefault();var f=e.target;
+  if(f.website&&f.website.value)return;
+  var last=+sessionStorage.getItem('ls')||0;
+  if(Date.now()-last<30000){alert('Заявку вже надіслано. Зачекайте хвилину.');return;}
+  wmSendLead([
+    '🔔 <b>Заявка — Робота для дівчат (webcamwork)</b>','',
+    '👤 Ім\'я: '+f.name.value,'📱 Контакт: '+f.phone.value,
+    '📄 Сторінка: '+location.href
+  ]).then(function(){
+    sessionStorage.setItem('ls',Date.now());
+    window.dataLayer=window.dataLayer||[];dataLayer.push({event:'lead_submit',form:'rabota-dlya-devushek'});
+    f.innerHTML='<p style="text-align:center;font-size:18px">✅ Заявку надіслано!<br>Напишемо вам протягом години.</p>';
   });
-})();
+});
 </script>
 </body>
 </html>
