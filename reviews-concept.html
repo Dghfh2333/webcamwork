@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Отзывы моделей — Студия Webcamwork Днепр</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--surface:#12111a;--surface2:#1a1826;
+  --text:#f0eef8;--muted:#8b7fa8;--rose:#ff4d8d;--rose-l:#ff80b0;
+  --violet:#b96bff;--gold:#d4a94a;--gold-l:#f0c96a;--line:#1e1a2e;
+  --grad:linear-gradient(135deg,var(--rose),var(--violet));
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+a{color:inherit;text-decoration:none}
+span{color:var(--rose-l)}
+
+/* HEADER */
+header{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto}
+.logo{font-weight:800;font-size:18px;letter-spacing:-.02em}
+.btn{display:inline-block;background:var(--grad);color:#fff;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none}
+
+/* HERO */
+.hero{text-align:center;padding:60px 20px 40px}
+.hero-tag{display:inline-block;background:rgba(255,77,141,.12);border:1px solid rgba(255,77,141,.3);color:var(--rose-l);font-size:12px;padding:4px 12px;border-radius:20px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.08em}
+.hero h1{font-size:clamp(28px,6vw,48px);font-weight:900;line-height:1.15;margin-bottom:12px}
+.hero p{color:var(--muted);font-size:16px;max-width:560px;margin:0 auto 32px}
+
+/* RATING SUMMARY */
+.rating-bar{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 32px;margin-bottom:48px;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center}
+.rating-big{font-size:72px;font-weight:900;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stars{color:var(--gold);font-size:22px;letter-spacing:2px;display:block;margin:4px 0}
+.rating-count{color:var(--muted);font-size:14px}
+.bars{flex:1;min-width:200px}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:13px}
+.bar-row span:first-child{width:12px;text-align:right;color:var(--muted)}
+.bar-track{flex:1;background:#1e1a2e;border-radius:4px;height:8px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;background:var(--grad)}
+.bar-row span:last-child{width:28px;color:var(--muted);text-align:right}
+
+/* REVIEWS GRID */
+.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:56px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .2s}
+.card:hover{border-color:rgba(255,77,141,.3)}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:#fff;flex-shrink:0}
+.card-name{font-weight:700;font-size:15px}
+.card-meta{font-size:12px;color:var(--muted)}
+.card-stars{color:var(--gold);font-size:14px;margin-bottom:12px}
+.card-text{color:var(--muted);font-size:14px;line-height:1.6}
+.card-tag{display:inline-block;margin-top:12px;background:rgba(185,107,255,.12);border:1px solid rgba(185,107,255,.25);color:var(--violet);font-size:11px;padding:3px 10px;border-radius:20px}
+.card.featured{border-color:rgba(212,169,74,.4);background:linear-gradient(135deg,rgba(212,169,74,.06),rgba(185,107,255,.06))}
+.card.featured .card-tag{background:rgba(212,169,74,.12);border-color:rgba(212,169,74,.3);color:var(--gold)}
+
+/* CASES */
+.cases-title{font-size:24px;font-weight:800;text-align:center;margin-bottom:32px}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-bottom:56px}
+.case{background:var(--surface2);border:1px solid var(--line);border-radius:16px;padding:24px}
+.case-icon{font-size:32px;margin-bottom:12px}
+.case-label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.case-value{font-size:28px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.case-desc{font-size:13px;color:var(--muted)}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,rgba(255,77,141,.1),rgba(185,107,255,.1));border:1px solid #31213F;border-radius:20px;padding:40px;text-align:center;margin-bottom:48px}
+.cta h2{font-size:26px;font-weight:800;margin-bottom:10px}
+.cta p{color:var(--muted);margin-bottom:24px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+@media(max-width:600px){
+  .rating-bar{flex-direction:column;text-align:center}
+  .bars{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Webcam<span style="color:var(--rose)">work</span></div>
+  <a class="btn" href="#cta">Оставить заявку</a>
+</header>
+
+<div class="hero wrap">
+  <div class="hero-tag">Реальные отзывы моделей</div>
+  <h1>Что говорят девушки<br>о работе в <span>студии</span></h1>
+  <p>Анонимные отзывы от действующих и бывших моделей студии Webcamwork. Без редакции — только реальный опыт.</p>
+</div>
+
+<div class="wrap">
+  <div class="rating-bar">
+    <div style="text-align:center">
+      <div class="rating-big">4.8</div>
+      <span class="stars">★★★★★</span>
+      <div class="rating-count">на основе 47 отзывов</div>
+    </div>
+    <div class="bars">
+      <div class="bar-row"><span>5</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><span>37</span></div>
+      <div class="bar-row"><span>4</span><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div><span>7</span></div>
+      <div class="bar-row"><span>3</span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div><span>2</span></div>
+      <div class="bar-row"><span>2</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><span>1</span></div>
+      <div class="bar-row"><span>1</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span>0</span></div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Оценивали</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px">
+        <div style="background:var(--surface2);padding:8px 12px;border-radius:8px">💰 Оплата<br><b style="color:var(--gold)">4.9</b></div>
+        <div style="background:var(--surface2);padding:8px 12px;border-radius:8px">👩‍💼 Менеджер<br><b style="color:var(--gold)">4.8</b></div>
+        <div style="background:var(--surface2);padding:8px 12px;border-radius:8px">🏢 Студия<br><b style="color:var(--gold)">4.7</b></div>
+        <div style="background:var(--surface2);padding:8px 12px;border-radius:8px">📈 Обучение<br><b style="color:var(--gold)">4.8</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews">
+    <div class="card featured">
+      <div class="card-header">
+        <div class="avatar">А</div>
+        <div><div class="card-name">Аня, 22</div><div class="card-meta">Модель · 8 месяцев</div></div>
+      </div>
+      <div class="card-stars">★★★★★</div>
+      <div class="card-text">Пришла без опыта, была уверена что ничего не выйдет. За первый месяц заработала 31 000. Сейчас стабильно 55–65k. Менеджер всегда на связи, объясняет всё нормально — без давления.</div>
+      <span class="card-tag">⭐ Топ-отзыв</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar" style="background:linear-gradient(135deg,#d4a94a,#f0c96a)">В</div>
+        <div><div class="card-name">Виктория, 25</div><div class="card-meta">Оператор чата · 5 месяцев</div></div>
+      </div>
+      <div class="card-stars">★★★★★</div>
+      <div class="card-text">Выбрала работу оператора — никаких камер, только текстовый чат. Удобно совмещать с учёбой. График гибкий, выплаты каждый день без задержек.</div>
+      <span class="card-tag">Чат-оператор</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar" style="background:linear-gradient(135deg,#4d8dff,#6bbfff)">М</div>
+        <div><div class="card-name">Маша, 21</div><div class="card-meta">Модель · 3 месяца</div></div>
+      </div>
+      <div class="card-stars">★★★★★</div>
+      <div class="card-text">Первые 2 недели думала бросить — сложно психологически. Менеджер помогла, поменяли платформу. Теперь всё ок. В третий месяц вышла на 48k. Спокойная атмосфера в студии.</div>
+      <span class="card-tag">Без опыта</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar" style="background:linear-gradient(135deg,#ff6b4d,#ffb347)">К</div>
+        <div><div class="card-name">Катя, 24</div><div class="card-meta">Модель · 1 год+</div></div>
+      </div>
+      <div class="card-stars">★★★★★</div>
+      <div class="card-text">Работаю больше года. За это время сменила 2 других студии — здесь лучший процент и нет скрытых вычетов. Что обещают — то платят. Рекомендую подругам.</div>
+      <span class="card-tag">1+ год</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar" style="background:linear-gradient(135deg,#4dff8d,#47c97e)">Д</div>
+        <div><div class="card-name">Даша, 23</div><div class="card-meta">Модель · 6 месяцев</div></div>
+      </div>
+      <div class="card-stars">★★★★☆</div>
+      <div class="card-text">Студия удобная, оборудование хорошее. Единственный минус — иногда нет свободного места в вечернее время. В целом всё устраивает, доход стабильный — 40–50k в месяц.</div>
+      <span class="card-tag">Вечерняя смена</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar" style="background:linear-gradient(135deg,#c96bff,#e0aaff)">О</div>
+        <div><div class="card-name">Оля, 26</div><div class="card-meta">Модель · 4 месяца</div></div>
+      </div>
+      <div class="card-stars">★★★★★</div>
+      <div class="card-text">Пробовала сама — зарабатывала копейки. В студии сразу дали менеджера, настроили всё за 2 дня. Первая неделя уже дала 8 000 грн. Сейчас планирую остаться надолго.</div>
+      <span class="card-tag">Пришла из онлайн</span>
+    </div>
+  </div>
+
+  <div class="cases-title">Реальные <span>результаты</span> за первые 90 дней</div>
+  <div class="cases">
+    <div class="case">
+      <div class="case-icon">💸</div>
+      <div class="case-label">Медианный доход за 1 месяц</div>
+      <div class="case-value">42 000 грн</div>
+      <div class="case-desc">Среди моделей без опыта, первые 3 месяца работы в студии</div>
+    </div>
+    <div class="case">
+      <div class="case-icon">⚡</div>
+      <div class="case-label">Время до первого дохода</div>
+      <div class="case-value">48 часов</div>
+      <div class="case-desc">От заявки до первого стрима — обучение + настройка включены</div>
+    </div>
+    <div class="case">
+      <div class="case-icon">📈</div>
+      <div class="case-label">Рост дохода за 3 месяца</div>
+      <div class="case-value">×2.4</div>
+      <div class="case-desc">Средний рост от 1-го к 3-му месяцу у моделей студии</div>
+    </div>
+    <div class="case">
+      <div class="case-icon">🔒</div>
+      <div class="case-label">Возвращаются после паузы</div>
+      <div class="case-value">78%</div>
+      <div class="case-desc">Моделей, взявших паузу, возвращаются именно в эту студию</div>
+    </div>
+  </div>
+
+  <div class="cta" id="cta">
+    <h2>Попробуй сама — первая смена <span>бесплатно</span></h2>
+    <p>Без обязательств. Узнаешь условия, посмотришь студию, познакомишься с командой.</p>
+    <div class="cta-btns">
+      <a class="btn" href="/anketa-web-model/">Оставить заявку</a>
+      <a class="btn" style="background:none;border:1px solid var(--line)" href="/rabota-dlya-devushek-dnepr/">Подробнее об условиях</a>
+    </div>
+  </div>
+</div>
+
+<footer style="padding:24px 20px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)">
+  © 2018–2026 Студия WEBMODEL, Днепр. Работа для девушек 18+.
+</footer>
+
+</body>
+</html>
