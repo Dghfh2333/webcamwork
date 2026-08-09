@@ -118,9 +118,22 @@ document.addEventListener('click',function(e){
   if(!el)return;
   e.preventDefault();
   if(window.dataLayer)dataLayer.push({event:'telegram_click',page:location.pathname});
-  var ts=new Date().toLocaleString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  var utmB=wmUtmBlock();
-  var txt='👆 <b>Клік по Telegram</b>\n\n'+WMT.lines().join('\n')+'\n\n'+(utmB?utmB+'\n\n':'')+'📄 <b>Сторінка:</b> '+location.pathname+'\n🕐 '+ts+' · webcamwork.com.ua';
-  fetch('/lead.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({site:location.hostname,page:location.pathname,text:txt})}).catch(function(){});
-  var href=el.href;setTimeout(function(){window.open(href,'_blank');},150);
+  var href=el.href;
+  var now=new Date();
+  var date=('0'+now.getDate()).slice(-2)+'.'+('0'+(now.getMonth()+1)).slice(-2);
+  Promise.race([WMT.ready,new Promise(function(r){setTimeout(r,1500);})]).then(function(){
+    var r=WMT.raw();
+    fetch('/lead.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      lead_type:'tg_click',
+      date:date,
+      site:location.hostname,
+      page:location.pathname,
+      source:r.src,
+      campaign:utmVal('utm_campaign'),
+      term:utmVal('utm_term'),
+      geo:r.geo||'-',
+      device:r.dev||'-'
+    })}).catch(function(){});
+  });
+  setTimeout(function(){window.open(href,'_blank');},150);
 });
